@@ -20,3 +20,8 @@ The Scrolljumper application has the following dependencies:
 
 - Mousewheel input
 - Compatible operating system
+
+## Compilation
+
+gcc.exe -Wall -O2  -c main.c -o main.o
+gcc.exe  -o Scrolljump.exe main.o  -s 
