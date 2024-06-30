@@ -1,0 +1,27 @@
+name: Build and Release
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up MinGW
+      run: choco install mingw -y
+
+    - name: Build
+      run: |
+        gcc.exe -Wall -O2 -c main.c -o main.o
+        gcc.exe -o Scrolljump.exe main.o -s
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: Scrolljump
+        path: ./Scrolljump.exe
