@@ -10,12 +10,11 @@ jobs:
     runs-on: windows-latest
     
     steps:
+    - name: Checkout code
     - uses: actions/checkout@v3
     
     - name: Set up MinGW
-      uses: egor-tensin/setup-mingw@v2
-      with:
-        platform: x64
+      run: choco install mingw -y
     
     - name: Compile
       run: |
